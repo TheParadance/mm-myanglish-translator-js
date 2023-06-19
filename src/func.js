@@ -341,11 +341,15 @@ function myanmarWordSpliter(text){
 
 
 
+export const ConvertMode = Object.freeze({
+    ADD_BRACKET_UNKNOWN_KEYWORDS: 'add-bracket-unknown-keywords',
+    LEAVE_UNKNOWN_KEYWORDS: 'leave-unknown-keywords',
+});
 
 
 
 export default {
-    convertToBurmese: (string) => {
+    convertToBurmese: (string, option = {mode: ConvertMode.LEAVE_UNKNOWN_KEYWORDS}) => {
         if(!dataOptimized) optimizeData();
 
         let str = '';
@@ -400,13 +404,13 @@ export default {
                 if(token.length == 0){
                     str = str + ' ';
                 }else{
-                    str = str + `{${token}}`;
+                    str = str + (option.mode == ConvertMode.ADD_BRACKET_UNKNOWN_KEYWORDS ? `{${token}}` : token);
                 }
             }
             return str;
         }
     },
-    convertToMyanglish: (mmString) => {
+    convertToMyanglish: (mmString,  option = {mode: Mode.PROD}) => {
         if(!dataOptimized) optimizeData();
         
         const tokens = myanmarWordSpliter(mmString);
@@ -446,14 +450,14 @@ export default {
                 }else if(token == ' ' && token.length == 1) {
                     appendStr(' ');
                 }else{
-                    appendStr(mat || `{${token}}`);
+                    appendStr(mat || (option.mode == ConvertMode.ADD_BRACKET_UNKNOWN_KEYWORDS ? `{${token}}` : token));
                 }
             }else{
                 const mat = MyanmarToMyanglishDataSet['1'][token];
                 if(token == ' ' && token.length == 1) {
                     appendStr(' ');
                 }else{
-                    appendStr(mat || `{${token}}`);
+                    appendStr(mat || (option.mode == ConvertMode.ADD_BRACKET_UNKNOWN_KEYWORDS ? `{${token}}` : token));
                 }
             }
             return str;

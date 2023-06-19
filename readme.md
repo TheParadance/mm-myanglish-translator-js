@@ -6,7 +6,7 @@ This library was created to translate between myanglish to burmese unicode and b
 ### Code example
 #### Translate Burmese to Myanglish
 ```javascript
-import translator from 'mm-myanglish-translator-js';
+import translator from 'myanglish-translator-js';
 const reault = translator.convertToMyanglish('ကျွန်မတို့နိုင်ငံတော်ကြီးက');
 console.log(result);
 
@@ -15,7 +15,7 @@ console.log(result);
 
 #### Translate Myanglish to Burmese
 ```javascript
-import translator from 'mm-myanglish-translator-js';
+import translator from 'myanglish-translator-js';
 const reault = translator.convertToBurmese('bite sar lo a pyin twar chin dl');
 console.log(result);
 
@@ -25,7 +25,7 @@ console.log(result);
 
 #### Burmese word splitter
 ```javascript
-import translator from 'mm-myanglish-translator-js';
+import translator from 'myanglish-translator-js';
 const reault = translator.myanmarWordSpliter('hello ကျွန်မတို့နိုင်ငံတော်ကြီးက');
 console.log(result);
 
@@ -35,9 +35,19 @@ console.log(result);
 
 #### Get total trained phrases
 ```javascript
-import translator from 'mm-myanglish-translator-js';
+import translator from 'myanglish-translator-js';
 const reault = translator.getDatasetCount();
 console.log(result);
 
 // output => 2400
+```
+
+
+#### Get text similarity
+```javascript
+import translator from 'myanglish-translator-js';
+const reault = textSimilarity("ကျွန်မတို့နိုင်ငံတော်ကြီးက", 'ကျွန်မတို့နိုင်ငံတော');
+console.log(result);
+
+// output => 0.32065217391304346
 ```
