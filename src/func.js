@@ -95,7 +95,7 @@ function optimizeData() {
         }
     })
     // Temp == null;
-    console.log(MyanmarToMyanglishDataSet);
+    // console.log(MyanmarToMyanglishDataSet);
     // console.log(DataSet);
     dataOptimized = true;
 }
@@ -465,6 +465,7 @@ export default {
         return str;
     },
     getDatasetCount: () => {
+        if(!dataOptimized) optimizeData();
         return TotalDataCount;
     },
     textSimilarity: (text1, text2) => {

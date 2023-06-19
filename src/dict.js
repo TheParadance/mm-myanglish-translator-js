@@ -1496,6 +1496,7 @@ export default {
     'thut pyarr': 'သွပ်ပြား',
     'cho': 'ချို',
     'ngan': 'ငံ',
+    'naing ngan': 'နိုင်ငံ',
     'htae': "ထည်",
     'ta min': 'တမင်',
     'ta chaut': 'တစ်ခြပ်',
