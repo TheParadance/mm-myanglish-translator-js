@@ -2880,7 +2880,7 @@ var func = {
             return str;
         }
     },
-    convertToMyanglish: (mmString,  option = {mode: Mode.PROD}) => {
+    convertToMyanglish: (mmString,  option = {mode: ConvertMode.LEAVE_UNKNOWN_KEYWORDS}) => {
         if(!dataOptimized) optimizeData();
         
         const tokens = myanmarWordSpliter(mmString);
