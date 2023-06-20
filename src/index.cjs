@@ -2497,8 +2497,9 @@ const MyanmarAlphabet = [
 ];
 const MyanmarVowelSound = [
     // 'ခ်', 'ခံ', 'ခ့', 'ခး', 'ခ္',
-    '်', '့', 'း', '္',
+    '်', 'း', '္',
     // 'ာ'
+    // 'ံ'
 ];
 
 
