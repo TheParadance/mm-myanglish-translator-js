@@ -2473,6 +2473,7 @@ var MyanglishToMyanmarDict = {
 };
 
 // console.log(MyanglishToMyanmarDict);
+const specialCharacterReg = /[&\/\\#,+()$~%.'":*?<>{}]/g;
 let dataOptimized = false;
 let TotalDataCount = 0;
 let DataSet = {
@@ -2497,7 +2498,7 @@ const MyanmarAlphabet = [
 ];
 const MyanmarVowelSound = [
     // 'ခ်', 'ခံ', 'ခ့', 'ခး', 'ခ္',
-    '်', 'း', '္',
+    '်', 'း', '္', "့",
     // 'ာ'
     // 'ံ'
 ];
@@ -2716,6 +2717,11 @@ function phraseSimilarity(text1, text2){
 }
 
 
+function removeSpecialCharacters(value){
+    return value.trim().replace(specialCharacterReg, ' ');
+}
+
+
 
 
 
@@ -2724,12 +2730,14 @@ function phraseSimilarity(text1, text2){
 function myanmarWordSpliter(text){
     // func.myanmarWordSpliter("ခြှောက်ပြစ်ကင်းသဲလဲဆင်ကိစ္စကိုစန္ဒာသင်္ကြန်အန္ဒြေရမရှိဘူးအတွေးအခေါ်မရှိကြဘူး");
 
+    text = removeSpecialCharacters(text);
+
     //
     // Splitting myanmar sentence will generate following
     // result
     // ['ခ', 'ြ', 'ှ', 'ေ', 'ာ', 'က', '်', 'ပ', 'ြ', 'စ', '်', 'က', 'င', '်', 'း', 'သ', 'ဲ', 'လ', 'ဲ', 'ဆ', 'င', '်', 'က', 'ိ', 'စ', '္', 'စ', 'က', 'ိ', 'ု', 'စ', 'န', '္', 'ဒ', 'ာ', 'သ', 'င', '်', '္', 'က', 'ြ', 'န', '်', 'အ', 'န', '္', 'ဒ', 'ြ', 'ေ', 'ရ', 'မ', 'ရ', 'ှ', 'ိ', 'ဘ', 'ူ', 'း', 'အ', 'တ', 'ွ', 'ေ', 'း', 'အ', 'ခ', 'ေ', 'ါ', '်', 'မ', 'ရ', 'ှ', 'ိ', 'က', 'ြ', 'ဘ', 'ူ', 'း']
     //
-    const split = text.split('');
+    const split = text.replace(/\n/g, '').split('');
     const word = [];
 
     // THEN
@@ -2807,7 +2815,7 @@ function myanmarWordSpliter(text){
         }
     }
     
-    return word;
+    return word.filter(c => c.trim().length > 0);
 }
 
 
