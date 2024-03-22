@@ -1,6 +1,6 @@
 {
   "name": "myanglish-translator",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
